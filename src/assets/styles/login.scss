@@ -1,0 +1,74 @@
+//login form
+.login-form {
+    margin-top: 55px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    .btn:hover {
+      background-color: grey;
+      border: 3px solid grey;
+    }
+  
+    .btn {
+      background-color: #2d2d2d;
+      border: 3px solid #2d2d2d;
+      border-radius: 15px;
+      width: 100px;
+      height: 35px;
+      color: white;
+      outline: none;
+      margin: 16px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 3px 3px 12px -2px #899599;
+    }
+  
+    .btn:active {
+      position: relative;
+      top: 2px;
+      background-color: #3d2d2d;
+      border: 3px solid #4d2d2d;
+    }
+  
+    input {
+      width: 300px;
+      height: 30px;
+      font-size: 16px;
+      border-radius: 10px;
+      padding: 5px;
+      outline: none;
+      display: block;
+      border: none;
+      border-bottom: 2px solid grey;
+      margin: 10px;
+      padding: 9px;
+      padding-left: 20px;
+    }
+  
+    input:focus {
+      background-color: #e7e7e7;
+      outline: none;
+    }
+  }
+
+  //bottom
+  .v-bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: #e7e7e7;
+    min-height: 40px;
+    padding-top: 15px;
+    .material-icons {
+      font-size: 36px;
+      color: #2d2d2d;
+    }
+  }
