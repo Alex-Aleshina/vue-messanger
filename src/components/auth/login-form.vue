@@ -3,7 +3,8 @@
     <h3 class="text-center">Chat Login</h3>
     <div>
         <form>
-            <input type="text" v-model="userId" placeholder="Enter user name" autocomplete="off" required @keyup.enter="onSubmit">
+            <input type="email" v-model="email" placeholder="Enter your email" autocomplete="off" required @keyup.enter="onSubmit">
+            <input type="password" v-model="password" placeholder="Enter your password" autocomplete="off" required @keyup.enter="onSubmit">
         </form>
         <span v-if="isValid">{{error}}</span>
         <div>
@@ -24,10 +25,11 @@ import {
 } from 'vuex'
 
 export default {
-    name: 'login-form',
+    name: 'auth-form',
     data() {
         return {
-            userId: '',
+            email: '',
+            password: '',
         }
     },
     methods: {
@@ -39,9 +41,13 @@ export default {
             'POST_ERR'
         ]),
         onSubmit() {
-            const result = this.LOGIN_USER(this.userId);
+            const result = this.LOGIN_USER({
+                email: this.email, 
+                password: this.password
+            });
+            
             if (result) {
-                this.$router.push('chats');
+                this.$router.push('contacts');
             }
         }
     },
@@ -52,8 +58,7 @@ export default {
         ]),
 
         isValid: function () {
-            console.log(this.userId.length);
-            const result = this.userId.length < 3;
+            const result = this.email.length < 3;
             return result ? this.SET_ERRORS("Please enter a valid username") : false;
         }
     }

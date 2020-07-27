@@ -3,8 +3,9 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import vLogin from '../components/login/v-login'
-
+import vLogin from '../components/auth/v-login'
+import signUp from '../components/auth/v-register'
+import vAllContacts from '../components/v-all-contacts'
 
 const router = new VueRouter({
   mode: 'history',
@@ -14,13 +15,17 @@ const router = new VueRouter({
       path: '/',
       name: 'login',
       component: vLogin
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: signUp
+    },
+    {
+      path: '/contacts',
+      name: 'contacts',
+      component: vAllContacts
     }
-    // ,
-    // {
-    //   path: '/contacts',
-    //   name: 'contacts',
-    //   component: vAllContacts
-    // },
     // {
     //   path: '/contact',
     //   name: 'contact',

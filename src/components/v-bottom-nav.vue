@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class='v-bottom-nav' v-if="user.user">
+    <div class='v-bottom-nav' v-if="user">
         <router-link :to="{name: 'contacts'}">
             <i class="material-icons">person_pin</i>
         </router-link>
@@ -18,6 +18,7 @@
 <script>
 import {
     mapState,
+    mapActions,
     mapMutations
 } from 'vuex'
 
@@ -34,8 +35,11 @@ export default {
     },
     methods: {
         ...mapMutations([
-            'LOGOUT_USER',
             'SET_RECCONECT'
+        ]),
+
+        ...mapActions([
+            'LOGOUT_USER'
         ]),
 
         onLogout() {
