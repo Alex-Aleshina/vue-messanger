@@ -2,12 +2,12 @@
 <div class='v-contact-user'>
 
     <div class="user__name">
-        <span>Hello contacts</span>
-        <ul v-if="users">
-            <li v-for="user in users" :key="user.id">
+        <h2>All contacts</h2>
+        <div class="displayContacts" v-if="users">
+            <a href="#" v-for="user in users" :key="user.id" @click="toContactDialog(user)">
                 {{ user.userName }}
-            </li>
-        </ul>
+            </a>
+        </div>
 
     </div>
 </div>
@@ -23,6 +23,16 @@ export default {
         ...mapState([
             'users'
         ])
+    },
+    methods: {
+        toContactDialog(user) {
+            this.$router.push({
+                name: 'dialog',
+                params: {
+                    'userid': user.id
+                }
+            });
+        }
     }
 }
 </script>

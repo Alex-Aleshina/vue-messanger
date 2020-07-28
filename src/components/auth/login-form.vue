@@ -1,6 +1,6 @@
 <template>
-<div class="login-form">
-    <h3 class="text-center">Chat Login</h3>
+<div class="auth-form">
+    <h3>Chat Login</h3>
     <div>
         <form>
             <input type="email" v-model="email" placeholder="Enter your email" autocomplete="off" required @keyup.enter="onSubmit">
@@ -45,7 +45,7 @@ export default {
                 email: this.email, 
                 password: this.password
             });
-            
+
             if (result) {
                 this.$router.push('contacts');
             }

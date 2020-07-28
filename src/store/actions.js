@@ -20,8 +20,6 @@ export default {
         }
     },
 
-
-
     async SIGN_UP(_, { email, password, userName }) {
         await firebase.registerUser(email, password, userName)
         return true;
@@ -30,5 +28,11 @@ export default {
     async LOGOUT_USER({ commit }) {
         await firebase.logout();
         commit('SET_USER', null);
-    }
+    },
+
+    // async SEND_MESSAGE({commit}, {messageText, recipientUserId}) {
+
+    // }
+
+
 }

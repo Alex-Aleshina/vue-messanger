@@ -1,74 +1,163 @@
 //login form
-.login-form {
-    margin-top: 55px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  
-    .btn:hover {
-      background-color: grey;
-      border: 3px solid grey;
-    }
-  
-    .btn {
-      background-color: #2d2d2d;
-      border: 3px solid #2d2d2d;
-      border-radius: 15px;
-      width: 100px;
-      height: 35px;
-      color: white;
-      outline: none;
-      margin: 16px;
-      font-size: 14px;
-      cursor: pointer;
-      box-shadow: 3px 3px 12px -2px #899599;
-    }
-  
-    .btn:active {
-      position: relative;
-      top: 2px;
-      background-color: #3d2d2d;
-      border: 3px solid #4d2d2d;
-    }
-  
-    input {
-      width: 300px;
-      height: 30px;
-      font-size: 16px;
-      border-radius: 10px;
-      padding: 5px;
-      outline: none;
-      display: block;
-      border: none;
-      border-bottom: 2px solid grey;
-      margin: 10px;
-      padding: 9px;
-      padding-left: 20px;
-    }
-  
-    input:focus {
-      background-color: #e7e7e7;
-      outline: none;
-    }
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 30px;
+  margin: 10px;
+  min-width: 250px;
+}
+
+.auth-form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+
+  .btn:hover {
+    background-color: grey;
+    border: 3px solid grey;
   }
 
-  //bottom
-  .v-bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    background: #e7e7e7;
-    min-height: 40px;
-    padding-top: 15px;
-    .material-icons {
-      font-size: 36px;
-      color: #2d2d2d;
-    }
+  .btn {
+    background-color: #2d2d2d;
+    border: 3px solid #2d2d2d;
+    border-radius: 15px;
+    width: 100px;
+    height: 35px;
+    color: white;
+    outline: none;
+    margin: 16px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 3px 3px 12px -2px #899599;
   }
+
+  .btn:active {
+    position: relative;
+    top: 2px;
+    background-color: #3d2d2d;
+    border: 3px solid #4d2d2d;
+  }
+
+  input {
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 5px;
+    outline: none;
+    display: block;
+    border: none;
+    border-bottom: 2px solid grey;
+    margin: 20px;
+    padding: 9px;
+    padding-left: 20px;
+  }
+
+  input:focus {
+    background-color: #e7e7e7;
+    outline: none;
+  }
+}
+
+//bottom
+.v-bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: #e7e7e7;
+  min-height: 40px;
+  padding-top: 15px;
+  .material-icons {
+    font-size: 36px;
+    color: #2d2d2d;
+  }
+}
+
+//contacts
+
+.displayContacts {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    outline: none;
+    color: rgb(32, 64, 124);
+    background-color: cornflowerblue;
+    font-weight: bolder;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid black;
+    margin: 3px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  /* visited link */
+  a:visited {
+    color: rgb(15, 52, 121);
+    font-weight: 900px;
+  }
+
+  /* mouse over link */
+  a:hover {
+    color: rgb(194, 196, 229);
+  }
+
+  /* selected link */
+  a:active {
+    color: yellow;
+  }
+}
+
+//dialogs
+
+.fieldMessages {
+  margin: auto;
+  border: 4px solid rgb(160, 201, 201);
+  border-radius: 15px;
+  background-color: rgb(161, 206, 206);
+  width: auto;
+  height: 65vh;
+}
+
+.v-user-chat {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  .input__field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 70px;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    background: #ffffff;
+  }
+  .material-icons {
+    font-size: 36px;
+  }
+
+  &__textfield {
+    width: 70%;
+    padding: 15px;
+    border: 0;
+    box-shadow: inset 0 0 5px 1px #bdbdbd;
+    outline: transparent;
+    border-radius: 30px;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

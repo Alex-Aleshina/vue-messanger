@@ -1,6 +1,6 @@
 <template>
-<div class="login-form">
-    <h2 class="text-center">Registration form</h2>
+<div class="auth-form">
+    <h2>Registration form</h2>
     <div>
         <form>
             <input type="email" v-model="email" placeholder="Enter your email" autocomplete="off" required @keyup.enter="signUp">
