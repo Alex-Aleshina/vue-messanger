@@ -4,5 +4,14 @@ export default {
     },
     SET_USERS(state, users) {
         state.users = users
+    },
+    SET_DIALOGS(state, dialogs) {
+        state.dialogs = dialogs;
+    },
+    SET_ERRORS(state, errors) {
+        state.errors = errors
+    },
+    SET_RECCONECT(state, recconect) {
+        state.recconect = recconect
     }
 }

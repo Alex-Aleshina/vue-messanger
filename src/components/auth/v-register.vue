@@ -43,7 +43,7 @@ export default {
         ]),
         ...mapMutations([
             'SET_ERRORS'
-        ])
+        ]),
         signUp() {
             this.SIGN_UP({
                 email: this.email,

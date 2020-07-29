@@ -6,7 +6,7 @@
             <input type="email" v-model="email" placeholder="Enter your email" autocomplete="off" required @keyup.enter="onSubmit">
             <input type="password" v-model="password" placeholder="Enter your password" autocomplete="off" required @keyup.enter="onSubmit">
         </form>
-        <span v-if="isValid">{{error}}</span>
+        <span>{{error}}</span>
         <div>
             <button type="submit" class="btn" @click="onSubmit()" :disabled="isValid">
                 Enter chat
@@ -34,33 +34,28 @@ export default {
     },
     methods: {
         ...mapActions([
-            'LOGIN_USER',
-            'SET_ERRORS'
+            'LOGIN_USER'
         ]),
         ...mapMutations([
-            'POST_ERR'
+            'SET_ERRORS'
         ]),
         onSubmit() {
-            const result = this.LOGIN_USER({
-                email: this.email, 
-                password: this.password
-            });
-
-            if (result) {
+            if (this.email.length > 4 && this.password.length > 5) {
+                this.LOGIN_USER({
+                    email: this.email,
+                    password: this.password
+                });
                 this.$router.push('contacts');
+            } else {
+                this.SET_ERRORS('Please input correct value')
             }
         }
     },
 
     computed: {
         ...mapState([
-            'error'
-        ]),
-
-        isValid: function () {
-            const result = this.email.length < 3;
-            return result ? this.SET_ERRORS("Please enter a valid username") : false;
-        }
+            'errors'
+        ])
     }
 }
 </script>

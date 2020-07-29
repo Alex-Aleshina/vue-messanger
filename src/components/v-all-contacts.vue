@@ -21,7 +21,8 @@ import {
 export default {
     computed: {
         ...mapState([
-            'users'
+            'users',
+            'user'
         ])
     },
     methods: {
@@ -29,7 +30,8 @@ export default {
             this.$router.push({
                 name: 'dialog',
                 params: {
-                    'userid': user.id
+                    'userid': user.id,
+                    'userName': user.userName
                 }
             });
         }

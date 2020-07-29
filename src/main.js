@@ -5,8 +5,9 @@ import store from './store'
 import 'material-design-icons-iconfont'
 import './assets/styles/login.scss'
 import * as firebase from 'firebase/app'
+import VueChatScroll from 'vue-chat-scroll'
 
-// import VueChatScroll from 'vue-chat-scroll'
+Vue.use(VueChatScroll)
 
 Vue.config.productionTip = false
 

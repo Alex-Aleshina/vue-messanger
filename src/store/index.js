@@ -6,22 +6,26 @@ import actions from './actions'
 
 Vue.use(Vuex)
 
-// const debug = process.env.NODE_ENV !== 'production'
+
+// const vuexLocal = new VuexPersistence({
+//   storage: window.localStorage
+// })
 
 
 export default new Vuex.Store({
   state: {
+    errors: null,
+    recconect:false,
     users:[],
     user: null,
-    dialogs: [],
-    isloading: false
+    dialogs: []
   },
   mutations,
   actions,
   modules: {
   },
-  getters: {
-    hasError: state => state.error ? true : false
-  },
-  // strict: debug
+  // getters: {
+  //   hasError: state => state.errors ? true : false
+  // },
+  // plugins: [vuexLocal.plugin],
 })
