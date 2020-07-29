@@ -39,12 +39,11 @@ export default {
     },
     methods: {
         ...mapActions([
-            'SET_ERRORS',
             'SIGN_UP'
         ]),
         ...mapMutations([
-            'POST_ERR'
-        ]),
+            'SET_ERRORS'
+        ])
         signUp() {
             this.SIGN_UP({
                 email: this.email,
@@ -57,14 +56,8 @@ export default {
 
     computed: {
         ...mapState([
-            'error'
-        ]),
-
-        isValid: function () {
-            console.log(this.userId.length);
-            const result = this.userId.length < 3;
-            return result ? this.SET_ERRORS("Please enter a valid username") : false;
-        }
+            'errors'
+        ])
     }
 }
 </script>

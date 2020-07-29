@@ -23,9 +23,5 @@ export default {
 </script>
 
 <style>
-.login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+
 </style>
