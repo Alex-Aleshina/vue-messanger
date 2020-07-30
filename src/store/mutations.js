@@ -10,8 +10,5 @@ export default {
     },
     SET_ERRORS(state, errors) {
         state.errors = errors
-    },
-    SET_RECCONECT(state, recconect) {
-        state.recconect = recconect
     }
 }

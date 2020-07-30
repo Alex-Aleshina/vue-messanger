@@ -1,12 +1,9 @@
 <template>
 <div class="v-user-chat">
-    <div :show="hasError">{{ errors }}</div>
-
     <input type="text" class="v-user-chat__textfield" placeholder="Enter Message" autocomplete="off" v-model="messageText" @keydown.enter.shift.exact="sendMessage" required>
     <i class="material-icons sentIcon" @click="sendMessage">
         send
     </i>
-
 </div>
 </template>
 

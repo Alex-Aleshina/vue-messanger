@@ -3,9 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'material-design-icons-iconfont'
-import './assets/styles/login.scss'
+import './assets/styles/styles.scss'
 import * as firebase from 'firebase/app'
 import VueChatScroll from 'vue-chat-scroll'
+
 
 Vue.use(VueChatScroll)
 

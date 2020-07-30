@@ -6,9 +6,8 @@
             <input type="email" v-model="email" placeholder="Enter your email" autocomplete="off" required @keyup.enter="onSubmit">
             <input type="password" v-model="password" placeholder="Enter your password" autocomplete="off" required @keyup.enter="onSubmit">
         </form>
-        <span>{{error}}</span>
         <div>
-            <button type="submit" class="btn" @click="onSubmit()" :disabled="isValid">
+            <button type="submit" class="btn" @click="onSubmit()">
                 Enter chat
             </button>
         </div>

@@ -1,14 +1,11 @@
 <template>
-<div class='v-contact-user'>
-
-    <div class="user__name">
-        <h2>All contacts</h2>
-        <div class="displayContacts" v-if="users">
-            <a href="#" v-for="user in users" :key="user.id" @click="toContactDialog(user)">
-                {{ user.userName }}
-            </a>
-        </div>
-
+<div class="displayContacts">
+    <h2>All contacts</h2>
+    <div v-if="users">
+        <a href="#" v-for="user in usersWithoutCurrentUser" :key="user.id" @click="toContactDialog(user)">
+            <span>{{ user.userName }}</span>
+            <span class="infoAboutTimeinContacts">{{ getOnlineIndication(user) }}</span>
+        </a>
     </div>
 </div>
 </template>
@@ -17,23 +14,29 @@
 import {
     mapState
 } from 'vuex'
+import moment from 'moment'
 
 export default {
     computed: {
         ...mapState([
             'users',
             'user'
-        ])
+        ]),
+        usersWithoutCurrentUser() {
+            return this.users.filter(u => u.id !== this.user.id);
+        }
     },
     methods: {
         toContactDialog(user) {
             this.$router.push({
                 name: 'dialog',
                 params: {
-                    'userid': user.id,
-                    'userName': user.userName
+                    'userid': user.id
                 }
             });
+        },
+        getOnlineIndication(user) {
+            return user.isOnline ? 'online' : 'was online ' + moment(user.lastOnlineAt).fromNow();
         }
     }
 }

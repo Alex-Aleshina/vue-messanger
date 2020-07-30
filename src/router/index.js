@@ -41,16 +41,6 @@ const router = new VueRouter({
       component: vDialoglist,
       props: true
     }
-    // {
-    //   path: '/chats',
-    //   name: 'chats',
-    //   component: vUsersListChats
-    // },
-    // {
-    //   path: '/chat',
-    //   name: 'chat',
-    //   component: vUserChat
-    // }
   ]
 })
 

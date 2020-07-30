@@ -1,13 +1,12 @@
 import * as firebase from "firebase/app";
 
-// Add the Firebase services that you want to use
 import "firebase/auth";
 import "firebase/database";
 import "firebase/functions";
 
-// eslint-disable-line no-unused-vars
 let onUsersUpdated = null;
 let onMessagesUpdated = null;
+let userInfo = null;
 
 async function registerUser(email, password, userName) {
     try {
@@ -20,7 +19,6 @@ async function registerUser(email, password, userName) {
     }
     catch (error) {
         console.log(error)
-        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
 
@@ -32,9 +30,19 @@ async function registerUser(email, password, userName) {
     }
 }
 
+async function getCurrentUser() {
+    const userInfo = firebase.auth().currentUser;
+
+    return {
+        email: userInfo.user.email,
+        id: userInfo.user.uid
+    };
+}
+
 async function loginUser(email, password) {
     try {
-        const userInfo = await firebase.auth().signInWithEmailAndPassword(email, password);
+        userInfo = await firebase.auth().signInWithEmailAndPassword(email, password);
+
         return {
             email: userInfo.user.email,
             id: userInfo.user.uid
@@ -52,13 +60,23 @@ async function loginUser(email, password) {
     }
 }
 
+async function updateIsOnlineIndication() {
+    const isOnlineRef = firebase.database().ref(`users/${userInfo.user.uid}/isOnline`);
+    const lastOnlineAtRef = firebase.database().ref(`users/${userInfo.user.uid}/lastOnlineAt`);
+
+    await isOnlineRef.set(true);
+    await isOnlineRef.onDisconnect().set(false);
+    await lastOnlineAtRef.remove();
+    await lastOnlineAtRef.onDisconnect().set(firebase.database.ServerValue.TIMESTAMP);
+}
+
 function subscibeToDialogs(callback) {
     const currentUserId = firebase.auth().currentUser.uid;
 
     onMessagesUpdated = snapshot => {
         const messages = snapshot.val();
         const mappedMessages = {};
-        
+
         Object.keys(messages).forEach(msgId => {
             const msg = messages[msgId];
             const isIncoming = msg.senderUserId !== currentUserId;
@@ -69,7 +87,7 @@ function subscibeToDialogs(callback) {
                 sentAt: msg.sentAt,
                 isIncoming
             }
-            
+
             if (mappedMessages[otherUserId]) {
                 mappedMessages[otherUserId].push(mappedMsg);
             } else {
@@ -99,11 +117,11 @@ function subscribeToUsers(callback) {
 }
 
 async function logout() {
-    const currentUser = firebase.auth().currentUser;
-    if (currentUser) {
-        firebase.database().ref(`users`).off("value", onUsersUpdated);
-        firebase.database().ref(`dialogs`).off("value", onMessagesUpdated);
+    if (userInfo) {
+        firebase.database().ref(`users/${userInfo.user.uid}`).off("value", onUsersUpdated);
+        firebase.database().ref(`dialogs/${userInfo.user.uid}`).off("value", onMessagesUpdated);
         await firebase.auth().signOut();
+        userInfo = null;
     }
 }
 
@@ -116,5 +134,5 @@ async function addMessage(text, recipientUserId) {
 }
 
 export default {
-    registerUser, loginUser, subscribeToUsers, logout, addMessage, subscibeToDialogs
+    registerUser, loginUser, subscribeToUsers, logout, addMessage, subscibeToDialogs, getCurrentUser, updateIsOnlineIndication
 }

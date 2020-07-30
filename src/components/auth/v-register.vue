@@ -7,7 +7,6 @@
             <input type="password" v-model="password" placeholder="Enter your password" autocomplete="off" required @keyup.enter="signUp">
             <input type="text" v-model="userName" placeholder="Enter your user name" autocomplete="off" required @keyup.enter="signUp">
         </form>
-
         <div>
             <button type="submit" class="btn" @click="signUp()">
                 Sign Up

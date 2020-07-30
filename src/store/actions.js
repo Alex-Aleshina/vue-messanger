@@ -8,14 +8,15 @@ export default {
             commit('SET_USERS', users);
         }
 
-        function saveDialogs(dialogs){
+        function saveDialogs(dialogs) {
             commit('SET_DIALOGS', dialogs);
         }
 
         const userInfo = await firebase.loginUser(email, password);
         if (userInfo) {
-            commit('SET_USER', { user: email });
+            commit('SET_USER', { email: email, id: userInfo.id });
 
+            await firebase.updateIsOnlineIndication()
             firebase.subscribeToUsers(saveUsers);
             firebase.subscibeToDialogs(saveDialogs);
             return true;
@@ -38,9 +39,7 @@ export default {
         commit('SET_ERRORS', null);
     },
 
-    async SEND_MESSAGE(_, {messageText, recipientUserId}) {
+    async SEND_MESSAGE(_, { messageText, recipientUserId }) {
         await firebase.addMessage(messageText, recipientUserId);
     }
-
-
 }

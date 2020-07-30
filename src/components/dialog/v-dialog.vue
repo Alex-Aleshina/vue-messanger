@@ -21,26 +21,20 @@ import {
 export default {
     name: "v-dialog",
     props: {
-        userid: String,
-        userName: String
+        userid: String
     },
-    // data() {
-    //     nameUser: ''
-    // },
-    components: {
-        dialogMes,
-        dialogForm
-    },
-    methods: {
+    computed: {
         ...mapState([
             'users'
         ]),
-
-        takeUserName: function () {
-            let result = this.users;
-            return console.log(result.filter(this.userid, result));
-            
+        userName() {
+            const user = this.users.find(u => u.id === this.userid)
+            return user ? user.userName : '';
         }
+    },
+    components: {
+        dialogMes,
+        dialogForm
     }
 
 }
