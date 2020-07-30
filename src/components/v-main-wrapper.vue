@@ -15,11 +15,6 @@ export default {
     components: {
         vHeader,
         vBottomNav
-    },
-    props: {},
-    data() {
-        return {}
-    },
-    computed: {}
+    }
 }
 </script>

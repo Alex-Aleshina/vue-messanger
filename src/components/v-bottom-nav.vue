@@ -44,7 +44,6 @@ export default {
             'LOGOUT_USER',
             'LOGIN_USER'
         ]),
-
         onLogout() {
             this.$router.push({
                 path: '/'

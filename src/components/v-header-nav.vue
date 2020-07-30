@@ -23,9 +23,6 @@ export default {
             return currentUser ? currentUser.userName : '';
         }
     },
-    data() {
-        return {}
-    },
     methods: {
         onLogout() {
             this.$router.push({

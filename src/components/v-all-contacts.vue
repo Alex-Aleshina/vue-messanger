@@ -3,6 +3,7 @@
     <h2>All contacts</h2>
     <div v-if="users">
         <a href="#" v-for="user in usersWithoutCurrentUser" :key="user.id" @click="toContactDialog(user)">
+            <vUserProfile v-bind:email="user.email" />
             <span>{{ user.userName }}</span>
             <span class="infoAboutTimeinContacts">{{ getOnlineIndication(user) }}</span>
         </a>
@@ -15,8 +16,12 @@ import {
     mapState
 } from 'vuex'
 import moment from 'moment'
+import vUserProfile from './v-user-profile-pict'
 
 export default {
+    components: {
+        vUserProfile
+    },
     computed: {
         ...mapState([
             'users',
